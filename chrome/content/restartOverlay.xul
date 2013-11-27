@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://restartfirefox/skin/restartfirefox.css" type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://restartfirefox/locale/restart.dtd">
+<overlay id="restartOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<script type="application/x-javascript" src="chrome://restartfirefox/content/jquery.js" />
+<script type="application/x-javascript" src="chrome://restartfirefox/content/streams.js" />
+<script type="application/x-javascript" src="chrome://restartfirefox/content/restart.js" />
+
+<!-- Firefox Toolbar Overlay -->
+  <toolbarpalette id="BrowserToolbarPalette">
+          <toolbarbutton id="restartfirefox-button" class="toolbarbutton-1" 
+          oncommand="restartFirefox.ourRestart();" tooltiptext="&Restart;" 
+          label="&Restart;" />
+  </toolbarpalette>
+<menubar>
+  <rows> 
+  <row>
+  <radiogroup label="&ProxySwitcher.Menu;" orient="horizontal">
+    <rows>
+    <row>
+    <radio name="proxy" type="radio" label="&ProxySwitcher.Level0;" oncommand="changeProxy(this.label)" value=""/>
+    </row>
+    <row>
+	<radio name="proxy" type="radio" label="&beijing;" oncommand="changeProxy(this.label)" value="beijing" />
+	<radio name="proxy" type="radio" label="&shanghai;" oncommand="changeProxy(this.label)" value="shanghai" />
+	<radio name="proxy" type="radio" label="&shenzhen;" oncommand="changeProxy(this.label)" value="shenzhen" />
+	<radio name="proxy" type="radio" label="&guangzhou;" oncommand="changeProxy(this.label)" value="guangzhou" />
+	<radio name="proxy" type="radio" label="&suzhou;" oncommand="changeProxy(this.label)" value="suzhou" />
+	<radio name="proxy" type="radio" label="&zhuhai;" oncommand="changeProxy(this.label)" value="zhuhai" />
+	<radio name="proxy" type="radio" label="&qingdao;" oncommand="changeProxy(this.label)" value="qingdao" />
+	<radio name="proxy" type="radio" label="&jiaxing;" oncommand="changeProxy(this.label)" value="jiaxing" />
+	<radio name="proxy" type="radio" label="&jingan;" oncommand="changeProxy(this.label)" value="jingan" />
+	<radio name="proxy" type="radio" label="&zhongqing;" oncommand="changeProxy(this.label)" value="zhongqing" />
+	<radio name="proxy" type="radio" label="&changsha;" oncommand="changeProxy(this.label)" value="changsha" />
+	<radio name="proxy" type="radio" label="&hefei;" oncommand="changeProxy(this.label)" value="hefei" />
+	<radio name="proxy" type="radio" label="&nantong;" oncommand="changeProxy(this.label)" value="nantong" />
+	<radio name="proxy" type="radio" label="&baoding;" oncommand="changeProxy(this.label)" value="baoding" />
+	<radio name="proxy" type="radio" label="&wuxi;" oncommand="changeProxy(this.label)" value="wuxi" />
+	<radio name="proxy" type="radio" label="&kunshan;" oncommand="changeProxy(this.label)" value="kunshan" />
+	<radio name="proxy" type="radio" label="&changshu;" oncommand="changeProxy(this.label)" value="changshu" />
+	<radio name="proxy" type="radio" label="&wujiang;" oncommand="changeProxy(this.label)" value="wujiang" />
+	<radio name="proxy" type="radio" label="&qidong;" oncommand="changeProxy(this.label)" value="qidong" />
+	<radio name="proxy" type="radio" label="&haimen;" oncommand="changeProxy(this.label)" value="haimen" />
+	<radio name="proxy" type="radio" label="&shamen;" oncommand="changeProxy(this.label)" value="shamen" /> 
+	</row>
+	<row>
+	<radio name="proxy" type="radio" label="&xingtai;" oncommand="changeProxy(this.label)" value="xingtai" />
+	<radio name="proxy" type="radio" label="&foshan;" oncommand="changeProxy(this.label)" value="foshan" />
+	<radio name="proxy" type="radio" label="&guiyang;" oncommand="changeProxy(this.label)" value="guiyang" />
+	<radio name="proxy" type="radio" label="&chengde;" oncommand="changeProxy(this.label)" value="chengde" />
+	<radio name="proxy" type="radio" label="&tangshan;" oncommand="changeProxy(this.label)" value="tangshan" />
+	<radio name="proxy" type="radio" label="&nanchang;" oncommand="changeProxy(this.label)" value="nanchang" />
+	<radio name="proxy" type="radio" label="&jiangmen;" oncommand="changeProxy(this.label)" value="jiangmen" />
+	<radio name="proxy" type="radio" label="&dongguan;" oncommand="changeProxy(this.label)" value="dongguan" />
+	<radio name="proxy" type="radio" label="&changzhou;" oncommand="changeProxy(this.label)" value="changzhou" />
+	<radio name="proxy" type="radio" label="&taiyuan;" oncommand="changeProxy(this.label)" value="taiyuan" />
+	<radio name="proxy" type="radio" label="&hengshui;" oncommand="changeProxy(this.label)" value="hengshui" />
+	<radio name="proxy" type="radio" label="&zhongshan;" oncommand="changeProxy(this.label)" value="zhongshan" />
+	<radio name="proxy" type="radio" label="&huizhou;" oncommand="changeProxy(this.label)" value="huizhou" />
+	<radio name="proxy" type="radio" label="&zhaoqing;" oncommand="changeProxy(this.label)" value="zhaoqing" />
+	<radio name="proxy" type="radio" label="&wuhan;" oncommand="changeProxy(this.label)" value="wuhan" />
+	<radio name="proxy" type="radio" label="&zhangjiakou;" oncommand="changeProxy(this.label)" value="zhangjiakou" />
+	<radio name="proxy" type="radio" label="&qinhuangdao;" oncommand="changeProxy(this.label)" value="qinhuangdao" />
+	<radio name="proxy" type="radio" label="&handan;" oncommand="changeProxy(this.label)" value="handan" />
+	<radio name="proxy" type="radio" label="&xiaozhou;" oncommand="changeProxy(this.label)" value="xiaozhou" />
+	<radio name="proxy" type="radio" label="&kunming;" oncommand="changeProxy(this.label)" value="kunming" />  
+	<radio name="proxy" type="radio" label="&meiguo;" oncommand="changeProxy(this.label)" value="meiguo" />
+	<radio name="proxy" type="radio" label="&jianada;" oncommand="changeProxy(this.label)" value="jianada" />
+	<radio name="proxy" type="radio" label="&riben;" oncommand="changeProxy(this.label)" value="riben" />
+	<radio name="proxy" type="radio" label="&xianggang;" oncommand="changeProxy(this.label)" value="xianggang" />
+	<radio name="proxy" type="radio" label="&aomen;" oncommand="changeProxy(this.label)" value="aomen" />
+	<radio name="proxy" type="radio" label="&taiwan;" oncommand="changeProxy(this.label)" value="taiwan" />
+    <radio name="proxy" type="radio" label="&hanguo;" oncommand="changeProxy(this.label)" value="hanguo" />
+    </row>
+    </rows>
+  </radiogroup>
+  </row>
+  <row>
+  <button label="&refresh;" oncommand="refreshproxy()"/>
+  </row>
+  </rows>
+</menubar>
+</overlay>
