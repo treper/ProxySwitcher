@@ -1,3 +1,5 @@
+var selected_city="";
+
 var restartFirefox = {
 // main restart logic
 	ourRestart : function() {
@@ -16,14 +18,19 @@ function isEmpty(obj) {
     return true;
 };
 
-function switchproxy(proxy){
+function resetproxy() {
 	var prefs = Components.classes["@mozilla.org/preferences-service;1"] .getService(Components.interfaces.nsIPrefBranch);
+	prefs.setIntPref("network.proxy.type", 0); 
 	prefs.setCharPref("network.proxy.socks",'');
 	prefs.setIntPref("network.proxy.socks_port",0);
 	prefs.setCharPref("network.proxy.ssl",'');
 	prefs.setIntPref("network.proxy.ssl_port",0);
 	prefs.setCharPref("network.proxy.ftp",'');
 	prefs.setIntPref("network.proxy.ftp_port",0);
+};
+
+function switchproxy(proxy){
+	var prefs = Components.classes["@mozilla.org/preferences-service;1"] .getService(Components.interfaces.nsIPrefBranch);
 	if(proxy==="")
 	{
 		//do not use any type of proxy
@@ -41,29 +48,22 @@ function switchproxy(proxy){
 };
 
 function changeProxy(city){
-	//alert(city);
+	selected_city = city;
+	resetproxy();
 	$.post("http://10.5.20.62:8080/HttpProxyServer/proxyservlet",{location:city},function(data){
-		alert(data);
-		//var jsonData = JSON.parse(data);
-		//alert(jsonData);
-		//switchproxy(jsonData.proxy);
+		alert(data.proxy);
 		switchproxy(data.proxy);
 	},"json");
 };
 
 function refreshproxy(){
-	//alert("refresh");
-	var selected_city = $("radio[selected='true']").attr('label');
-	if(!isEmpty(selected_city)){
-		//alert(selected_city);
-		changProxy(selected_city);
-	}
+	changeProxy(selected_city);
 };
 
 $(document).ready(function(){
-	switchproxy("");
 	$('radio').attr('disabled','true');
 	$('radio[label="不使用代理"]').attr('disabled','false');
+	resetproxy();
 	$.get("http://10.5.20.62:8080/HttpProxyServer/proxyservlet",function(data){
 		var jsonData = JSON.parse(data);
 		var cities = jsonData.cities.split(",");
