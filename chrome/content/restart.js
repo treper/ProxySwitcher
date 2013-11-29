@@ -51,7 +51,7 @@ function changeProxy(city){
 	selected_city = city;
 	resetproxy();
 	$.post("http://10.5.20.62:8080/HttpProxyServer/proxyservlet",{location:city},function(data){
-		alert(data.proxy);
+		//alert(data.proxy);
 		switchproxy(data.proxy);
 	},"json");
 };
@@ -64,13 +64,20 @@ $(document).ready(function(){
 	$('radio').attr('disabled','true');
 	$('radio[label="不使用代理"]').attr('disabled','false');
 	resetproxy();
+	var colums = 20;
 	$.get("http://10.5.20.62:8080/HttpProxyServer/proxyservlet",function(data){
 		var jsonData = JSON.parse(data);
 		var cities = jsonData.cities.split(",");
-		for (var i =0; i< cities.length; i++) 
+		for (var j = 0; j < Math.ceil(cities.length/colums); j++) 
 		{
-			city=cities[i];
-			$('radio[label="'+city+'"]').attr('disabled','false');
+			var new_row = "<row name='proxyrow"+j+"'>";
+			for (var i = 0; i <colums && (j*colums+i < cities.length); i++) 
+			{
+				city = cities[j*colums+i];
+				new_row = new_row + "<radio type='radio' label='"+city+"' oncommand='changeProxy(this.label)'/>";
+			}
+			new_row = new_row+"</row>";
+			$("rows[name='all_proxy']").append($(new_row));			 
 		}
 	},"html");
 });
